@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-android'
+android {
+    compileSdkVersion 28
+    defaultConfig {
+//        applicationId "com.zhang.jitthirdgoogle"
+        applicationId "com.wushi.lenovo.asia5b"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        flavorDimensions "versionCode"
+    }
+    //签名工具
+    signingConfigs {
+        //正式发布版
+        release {
+            keyAlias 'china'
+            keyPassword '123520'
+            storeFile file('asia5b.jks')
+            storePassword '123520'
+        }
+        //调试debug版
+//        debug {
+//        keyAlias 'china'
+//        keyPassword '123520'
+//        storeFile file('asia5b.jks')
+//        storePassword '123520'
+//        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            multiDexEnabled true
+            zipAlignEnabled true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            multiDexEnabled true
+            zipAlignEnabled true
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    api project(path: ':thirdgoogle')
+
+}

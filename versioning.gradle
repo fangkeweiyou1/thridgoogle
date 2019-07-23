@@ -1,0 +1,43 @@
+ext.versions = [
+
+        // General
+        compileSdkVersion                 : 28,
+        buildToolsVersion                 : '27.0.0',
+        minSdkVersion                     : 21,
+        targetSdkVersion                  : 28,
+
+        // Libraries
+        supportLibrariesVersion           : '28+',
+        constraintLayoutVersion           : '1.1.3',
+        timberVersion                     : '4.5.1',
+        mosbyMvpVersion                   : '3.0.4',
+        glideVersion                      : '4.5.0',
+        lottieAnimations                  : '2.1.0',
+        multidexLib                       : '1.0.2',
+        eventBusVersion                   : '3.1.1',
+        //lib for di
+        daggerVersion                     : '2.14.1',
+        butterknifeVersion                : '8.8.1',
+        //lib fpr network
+        loggingInterceptorVersion         : '3.4.2',
+        retrofitVersion                   : '2.2.0',
+        rxJavaVersion                     : '2.0.7',
+        rxAndroidVersion                  : '2.0.1',
+        //lib for unit test
+        daggerMockVersion                 : '0.7.0',
+
+        arouter_api                       : '1.3.1',
+        arouter_compiler                  : '1.1.4',
+        zxing_version                  : '1.3.6',
+        refresh_version                  : '1.1.0-alpha-21',
+        tinypinyin_version                  : '2.0.3',
+        circleimageview                  : '2.2.0',
+        adapterhelper                  : '2.9.42',
+        rxpermission_version                  : '0.9.5@aar',
+        photoview_version                  : '2.1.3',
+        flexbox_version                  : '1.0.0',
+        bugly_version                  : 'latest.release',
+        tabbar_version                  : '1.0.8',
+        lifecycle_version                  : '1.1.1',
+
+]
