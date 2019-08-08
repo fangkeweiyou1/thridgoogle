@@ -12,3 +12,6 @@
 /captures
 .externalNativeBuild
 /.idea/
+app/libs/
+thirdgoogle/libs/
+thirdgoogle/src/main/res/

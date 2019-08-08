@@ -4,6 +4,8 @@ package com.zhang.thirdgoogle;
  * Created by zhangyuncai on 2019/7/23.
  * 文档,  创建该|文件 命名:google-services.json,注意替换包名
  * 用法:
+ * 依赖:classpath 'com.google.gms:google-services:3.2.1'
+ * apply plugin: 'com.google.gms.google-services'
  * 登录:  ThridGoogleProxy.loginGoogle(MainActivity.this);
  * 回调:ThridGoogleProxy.onActivityResult(requestCode, resultCode, data);
  */

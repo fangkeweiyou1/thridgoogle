@@ -21,17 +21,23 @@ import com.google.android.gms.common.api.Status;
 public class ThridGoogleProxy implements GoogleApiClient.OnConnectionFailedListener {
     private FragmentActivity activity;
     private static ThridGoogleProxy proxy;
+    private static ThridGoogleCallback callback;
 
-    public static void loginGoogle(FragmentActivity activity) {
-        if (proxy == null) {
-            proxy = new ThridGoogleProxy(activity);
-        }
-        proxy.iniGoogleApiClient();
-        proxy.signIn();
+    interface ThridGoogleCallback {
+        void result(GoogleSignInAccount acct);
     }
 
-    private ThridGoogleProxy(FragmentActivity activity) {
+    public static void loginGoogle(FragmentActivity activity, ThridGoogleCallback callback) {
+        if (proxy == null) {
+            proxy = new ThridGoogleProxy(activity, callback);
+        }
+    }
+
+    private ThridGoogleProxy(FragmentActivity activity, ThridGoogleCallback callback) {
         this.activity = activity;
+        this.callback = callback;
+        iniGoogleApiClient();
+        signIn();
     }
 
     /*---------------------->>>>  三方登录/谷歌 start <<<<<<<<<<-----------------*/
@@ -84,12 +90,16 @@ public class ThridGoogleProxy implements GoogleApiClient.OnConnectionFailedListe
             Log.e("robin", "成功");
             GoogleSignInAccount acct = result.getSignInAccount();
             if (acct != null) {
-                String userName = String.format("用户名是:%s", acct.getDisplayName());
-                String email = String.format("用户email是:%s", acct.getEmail());
-                String photoUrl = String.format("用户头像是:%s", acct.getPhotoUrl());
-                String userId = String.format("用户Id是:%s", acct.getId());
-                String userIdToken = String.format("用户IdToken是", acct.getIdToken());
-                System.out.println(userName + email + photoUrl + userId + userIdToken);
+                if (callback != null) {
+                    callback.result(acct);
+                } else {
+                    String userName = String.format("用户名是:%s", acct.getDisplayName());
+                    String email = String.format("用户email是:%s", acct.getEmail());
+                    String photoUrl = String.format("用户头像是:%s", acct.getPhotoUrl());
+                    String userId = String.format("用户Id是:%s", acct.getId());
+                    String userIdToken = String.format("用户IdToken是", acct.getIdToken());
+                    System.out.println(userName + email + photoUrl + userId + userIdToken);
+                }
 //                Timber.d("----------->>>>>>>>-----------" + "用户名是:" + acct.getDisplayName());
 //                Timber.d("----------->>>>>>>>-----------" + "用户email是:" + acct.getEmail());
 //                Timber.d("----------->>>>>>>>-----------" + "用户头像是:" + acct.getPhotoUrl());

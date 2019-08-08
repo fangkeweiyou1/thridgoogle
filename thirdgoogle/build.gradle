@@ -23,5 +23,6 @@ android {
 }
 
 dependencies {
-    api 'com.google.android.gms:play-services-auth:11.4.2'
+//    api 'com.google.android.gms:play-services-auth:11.4.2'
+    api 'com.google.android.gms:play-services-auth:16.0.0'
 }
