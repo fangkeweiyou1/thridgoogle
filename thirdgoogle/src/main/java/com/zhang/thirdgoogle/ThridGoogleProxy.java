@@ -23,10 +23,6 @@ public class ThridGoogleProxy implements GoogleApiClient.OnConnectionFailedListe
     private static ThridGoogleProxy proxy;
     private static ThridGoogleCallback callback;
 
-    interface ThridGoogleCallback {
-        void result(GoogleSignInAccount acct);
-    }
-
     public static void loginGoogle(FragmentActivity activity, ThridGoogleCallback callback) {
         if (proxy == null) {
             proxy = new ThridGoogleProxy(activity, callback);
