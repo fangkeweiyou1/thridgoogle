@@ -15,3 +15,11 @@
 app/libs/
 thirdgoogle/libs/
 thirdgoogle/src/main/res/
+thirdgoogle/local.properties
+thirdgoogle/.idea/workspace.xml
+thirdgoogle/.idea/vcs.xml
+thirdgoogle/.idea/runConfigurations.xml
+thirdgoogle/.idea/modules.xml
+thirdgoogle/.idea/misc.xml
+thirdgoogle/.idea/gradle.xml
+thirdgoogle/.idea/encodings.xml

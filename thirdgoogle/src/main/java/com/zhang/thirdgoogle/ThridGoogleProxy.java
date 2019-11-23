@@ -1,6 +1,5 @@
 package com.zhang.thirdgoogle;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
@@ -24,17 +23,14 @@ public class ThridGoogleProxy implements GoogleApiClient.OnConnectionFailedListe
     private static ThridGoogleCallback callback;
 
     public static void loginGoogle(FragmentActivity activity, ThridGoogleCallback callback) {
-        if (proxy == null) {
-            proxy = new ThridGoogleProxy(activity, callback);
-        }
-        proxy.signOut();
-        proxy.signIn();
+        proxy = new ThridGoogleProxy(activity, callback);
     }
 
     private ThridGoogleProxy(FragmentActivity activity, ThridGoogleCallback callback) {
         this.activity = activity;
         this.callback = callback;
         iniGoogleApiClient();
+        signIn();
     }
 
     /*---------------------->>>>  三方登录/谷歌 start <<<<<<<<<<-----------------*/
