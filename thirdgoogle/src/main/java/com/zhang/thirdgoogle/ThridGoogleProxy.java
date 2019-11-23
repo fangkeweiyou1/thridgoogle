@@ -27,13 +27,14 @@ public class ThridGoogleProxy implements GoogleApiClient.OnConnectionFailedListe
         if (proxy == null) {
             proxy = new ThridGoogleProxy(activity, callback);
         }
+        proxy.signOut();
+        proxy.signIn();
     }
 
     private ThridGoogleProxy(FragmentActivity activity, ThridGoogleCallback callback) {
         this.activity = activity;
         this.callback = callback;
         iniGoogleApiClient();
-        signIn();
     }
 
     /*---------------------->>>>  三方登录/谷歌 start <<<<<<<<<<-----------------*/
@@ -86,6 +87,8 @@ public class ThridGoogleProxy implements GoogleApiClient.OnConnectionFailedListe
             Log.e("robin", "成功");
             GoogleSignInAccount acct = result.getSignInAccount();
             if (acct != null) {
+                //登陆成功后就开始注销
+                signOut();
                 if (callback != null) {
                     callback.result(acct);
                 } else {
@@ -113,8 +116,6 @@ public class ThridGoogleProxy implements GoogleApiClient.OnConnectionFailedListe
 //                thirdInfoModel.setEmail(acct.getEmail());
 //                getPresenter().loginByThird(thirdInfoModel, LoginActivity.this);
 
-                //登陆成功后就开始注销
-                signOut();
             }
         } else {
 //            ToastUtils.showToast("登录失败" + result.getStatus());

@@ -15,6 +15,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.zhang.thirdgoogle.ThridGoogleCallback;
 import com.zhang.thirdgoogle.ThridGoogleProxy;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +28,12 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tv_main_long).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ThridGoogleProxy.loginGoogle(MainActivity.this);
+                ThridGoogleProxy.loginGoogle(MainActivity.this, new ThridGoogleCallback() {
+                    @Override
+                    public void result(GoogleSignInAccount acct) {
+
+                    }
+                });
             }
         });
     }
